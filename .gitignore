@@ -1,8 +1,6 @@
 venv
 .DS_Store
 debug*
-datasets/
-results/
 build/
 dist/
 *.png
