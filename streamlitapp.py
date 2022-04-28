@@ -24,4 +24,4 @@ if file_up is not None:
     name_ext = name_ext.split(".")[0]
     name_ext = name_ext + "_fake.png"
     st.write(name_ext)
-    st.image('results/checkpoints/testingRuns/test_latest/images/{}'.format(name_ext), caption="Fake CT Image", use_column_width=True)
+    st.image('results/checkpoints/checkpoints/testingRuns/test_latest/images/{}'.format(name_ext), caption="Fake CT Image", use_column_width=True)
