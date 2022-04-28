@@ -11,16 +11,17 @@ st.write("")
 
 file_up = st.file_uploader("Upload an image", type="jpg")
 
-subprocess.call(["main.sh"])
-
 if file_up is not None:
     with open(os.path.join("datasets/testingRuns/testA",file_up.name),"wb") as f:
         f.write(file_up.getbuffer())
-    subprocess.call(['sh', './main.sh'])
+    #subprocess.popen('main.sh', shell = True)
+    subprocess.run("bash main.sh", shell = True)
     image = Image.open(file_up)
     st.image(image, caption="Uploaded MRI Image", use_column_width=True)
     st.write("")
     st.write("Just a second...")
-    name_ext = file_up.name + "_fake"
+    name_ext = file_up.name
+    name_ext = name_ext.split(".")[0]
+    name_ext = name_ext + "_fake.png"
     st.write(name_ext)
-    st.image('results/checkpoints/testingRuns/test_latest/images/mri1440_fake.png', caption="Fake CT Image", use_column_width=True)
+    st.image('results/checkpoints/testingRuns/test_latest/images/{}'.format(name_ext), caption="Fake CT Image", use_column_width=True)
